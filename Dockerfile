@@ -10,8 +10,12 @@ WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=false
+
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        build-base postgresql-dev musl-dev && \
     echo "Installing base requirements..." && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ "$DEV" = "true" ] ; then \
@@ -19,7 +23,8 @@ RUN python -m venv /py && \
         /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     echo "Cleaning up temporary files..." && \
-    rm -rf /tmp/requirements.txt /tmp/requirements.dev.txt
+    rm -rf /tmp/requirements.txt /tmp/requirements.dev.txt && \
+    apk del .tmp-build-deps
 
 RUN adduser \
     -D \
