@@ -7,6 +7,8 @@ Recipe API is a RESTful API for managing cooking recipes. The project is built i
 - Docker & Docker Compose
 - Modular App Structure
 - Environment Variables (.env)
+- Django & Django REST framework (DRF)
+- PostgreSQL
 
 ## Getting Started
 
