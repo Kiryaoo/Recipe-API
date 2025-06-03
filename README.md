@@ -33,4 +33,4 @@ The API will be available at: http://localhost:8000/
 
 ##  Testing
 
-You can test the API using SwaggerUI. To check this you need to write localhost:8000/api/docs in your browser
+You can test the API using SwaggerUI. To check this you need to write http://localhost:8000/api/docs/ in your browser
